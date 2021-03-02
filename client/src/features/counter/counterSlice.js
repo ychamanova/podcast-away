@@ -50,7 +50,7 @@ export const selectCount = (state) => state.counter.value;
 
 // This function is a basic call to the server API to get an array of pre-determined users
 export const fetchUsers = () => (dispatch) => {
-  fetch('/api/users')
+  fetch('/api/podcasts')
     .then((res) => res.json())
     .then((data) => dispatch(setUsers(data)));
 };

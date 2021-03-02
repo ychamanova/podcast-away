@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const controllers = require('./controllers');
 
 var app = express();
 const port = 8080;
@@ -11,9 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.set('view engine', 'html');
 
-app.get('/api/users', (req, res) => {
-  res.send(['Aang', 'Katara', 'Momo', 'Sokka', 'Appa']);
-});
+app.get('/api/podcasts', controllers.podcasts.getPodcasts);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
