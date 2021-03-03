@@ -1,25 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  decrement,
-  fetchUsers,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  selectCount,
-  selectUsers,
-} from './counterSlice';
+  toggleActive,
+  setLocalPodcasts,
+  setRemotePodcasts,
+  savePodcast,
+  fetchRemotePodcasts,
+  selectRemotePodcasts,
+  selectLocalPodcasts,
+  fetchLocalPodcasts,
+} from './podcastSlice';
 import styles from './Counter.module.css';
 
-export function Counter() {
-  const count = useSelector(selectCount);
-  const users = useSelector(selectUsers);
+export function Player() {
+  const local = useSelector(selectLocalPodcasts);
+  const remote = useSelector(selectRemotePodcasts);
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+
+  React.useEffect(() => {
+    dispatch(fetchRemotePodcasts());
+    dispatch(fetchLocalPodcasts());
+  }, [])
 
   return (
     <div>
-      <div className={styles.row}>
+      <ol>{remote.map(p => (
+        <div>{p.name}</div>
+      ))}
+      </ol>
+      <ol>{local.map(p => (
+        <div>{p.name}</div>
+      ))}</ol>
+      {/* <div className={styles.row}>
         <button
           className={styles.button}
           aria-label="Increment value"
@@ -66,7 +78,7 @@ export function Counter() {
           Fetch Users
         </button>
       </div>
-      <div className={styles.usersRow}>{users.join(' | ')}</div>
+      <div className={styles.usersRow}>{users.join(' | ')}</div> */}
     </div>
   );
 }

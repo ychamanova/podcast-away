@@ -1,15 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Player } from './features/podcast/Player';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
+
+        <Player />
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <span>
@@ -48,8 +48,8 @@ function App() {
             rel="noopener noreferrer"
           >
             React Redux
-          </a>
-        </span>
+          </a> */}
+        {/* </span> */}
       </header>
     </div>
   );

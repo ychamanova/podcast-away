@@ -1,8 +1,18 @@
+import { throttle } from 'lodash';
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import podcastReducer from '../features/podcast/podcastSlice';
+import { saveLocal } from '../features/podcast/saveLocal';
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    podcast: podcastReducer,
   },
 });
+
+store.subscribe(throttle(() => {
+  saveLocal({
+    local: store.getState().local
+  });
+}));
+
+
