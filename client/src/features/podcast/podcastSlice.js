@@ -20,11 +20,23 @@ export const podcastSlice = createSlice({
     toggleActive: (state) => {
       state.active = !state.active;
     },
-    savePodcast: (state, action) => {
-      state.local.push(action.payload);
+    addPodcast: (state, action) => {
+      let item = { ...action.payload, id: uuidv4() };
+      if (state.local.filter(e => e.audio === item.audio).length === 0) {
+        state.local.unshift(action.payload)
+      } else {
+        return;
+      }
+    },
+    deletePodcast: (state, action) => {
+      let itemId = action.payload;
+      console.log('deleting', itemId)
     },
     updateLocalStorage: (state) => {
-      localStorage.set('podcasts', JSON.stringify(state.local))
+      localStorage.setItem('podcasts', JSON.stringify(state.local))
+    },
+    updateLocalPodcasts: (state, action) => {
+      state.local = action.payload;
     }
   },
 });
@@ -33,7 +45,10 @@ export const {
   toggleActive,
   setLocalPodcasts,
   setRemotePodcasts,
-  savePodcast,
+  addPodcast,
+  deletePodcast,
+  updateLocalStorage,
+  updateLocalPodcasts,
 } = podcastSlice.actions;
 
 export const fetchRemotePodcasts = () => (dispatch) => {
