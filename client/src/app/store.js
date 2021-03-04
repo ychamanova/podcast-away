@@ -9,10 +9,10 @@ export const store = configureStore({
   },
 });
 
-store.subscribe(throttle(() => {
-  saveLocal({
-    local: store.getState().local
-  });
-}));
+// store.subscribe(throttle(() => {
+//   saveLocal({
+//     local: store.getState().local
+//   });
+// }));
 
 

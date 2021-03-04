@@ -53,13 +53,12 @@ export const fetchRemotePodcasts = () => (dispatch) => {
 };
 
 export const fetchLocalPodcasts = () => (dispatch) => {
-  const localPodcasts = localStorage.getItem('podcasts') === undefined
-    ? JSON.parse(localStorage.getItem('podcasts')) : [{ name: 'hello' }];
+  const localPodcasts = localStorage.getItem('podcasts') !== undefined
+    ? JSON.parse(localStorage.getItem('podcasts')) : [];
   dispatch(setLocalPodcasts(localPodcasts));
 };
 
 export const selectRemotePodcasts = (state) => state.podcast.remote;
-
 export const selectLocalPodcasts = (state) => state.podcast.local;
 
 
