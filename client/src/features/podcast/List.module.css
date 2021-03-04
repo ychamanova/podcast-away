@@ -1,0 +1,13 @@
+.List {
+  width: 50%;
+}
+
+.ListTitle {
+  text-align: center;
+}
+
+.ListDroppable {
+  padding: 20px;
+  margin: 20px;
+  background-color: rgba(0, 0, 5, 0.571);
+}

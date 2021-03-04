@@ -2,6 +2,9 @@ import React, { useState, } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { List } from './List'
+
+import styles from './Player.module.css';
+
 import {
   addPodcast,
   deletePodcast,
@@ -49,10 +52,15 @@ export function Player() {
     }
   }
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <List list={'Remote'} podcasts={remote} />
-      <br />
-      <List list={'Local'} podcasts={local} />
-    </DragDropContext>
+    <div className={styles.Player}>
+      <DragDropContext onDragEnd={onDragEnd} >
+
+        <List list={'Remote'} podcasts={remote} />
+        <br />
+        <List list={'Local'} podcasts={local} />
+
+
+      </DragDropContext>
+    </div>
   )
 }
