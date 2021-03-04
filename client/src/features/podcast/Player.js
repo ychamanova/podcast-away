@@ -24,7 +24,6 @@ export function Player() {
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
-    console.log(result);
     //if local element is dropped anywhere on screen, delete it and refresh local storage
     if (destination === null && source.droppableId === 'Local') {
       dispatch(deletePodcast(draggableId));
@@ -49,9 +48,6 @@ export function Player() {
       return;
     }
   }
-
-
-
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <List list={'Remote'} podcasts={remote} />

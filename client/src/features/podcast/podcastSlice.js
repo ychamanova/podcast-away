@@ -14,7 +14,6 @@ export const podcastSlice = createSlice({
     },
     loadLocalPodcasts: (state, action) => {
       const localPodcasts = localStorage.getItem('podcasts');
-      console.log(typeof localPodcasts)
       if (localPodcasts === '' || localPodcasts === null) {
         localStorage.setItem('podcasts', '[]');
         state.local = [];
@@ -28,14 +27,15 @@ export const podcastSlice = createSlice({
     addPodcast: (state, action) => {
       let item = { ...action.payload, id: uuidv4() };
       if (state.local.filter(e => e.audio === item.audio).length === 0) {
-        state.local.unshift(item)
+        state.local.unshift(item);
       } else {
         return;
       }
     },
     deletePodcast: (state, action) => {
       let itemId = action.payload;
-      console.log('deleting', itemId)
+      let newState = [...state.local].filter(i => i.id !== itemId);
+      state.local = newState;
     },
     updateLocalStorage: (state) => {
       localStorage.setItem('podcasts', JSON.stringify(state.local))
