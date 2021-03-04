@@ -1,10 +1,9 @@
 import React, { useState, } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { podcastSlice } from './podcastSlice';
 
 export function Row({ podcast, index }) {
   return (
-    <Draggable key={podcast.audio} draggableId={podcast.audio} index={index}>
+    <Draggable key={podcast.audio} draggableId={podcast.id} index={index}>
       {(provided) => (
         <div>
           <div
@@ -16,7 +15,6 @@ export function Row({ podcast, index }) {
           </div>
           {provided.placeholder}
         </div>
-
       )}
     </Draggable>
   )

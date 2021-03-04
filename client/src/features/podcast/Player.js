@@ -15,7 +15,7 @@ export function Player() {
   const dispatch = useDispatch();
 
   const onDragEnd = result => {
-    console.log('drag-end')
+    console.log(result)
   }
 
   React.useEffect(() => {
@@ -26,6 +26,8 @@ export function Player() {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <List list={'Remote'} podcasts={remote} />
+      <br />
+      <List list={'Local'} podcasts={local} />
     </DragDropContext>
   )
 }
