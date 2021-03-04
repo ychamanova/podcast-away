@@ -12,10 +12,15 @@ export const podcastSlice = createSlice({
     setRemotePodcasts: (state, action) => {
       state.remote = action.payload.map(item => ({ ...item, id: uuidv4() }))
     },
-    setLocalPodcasts: (state, action) => {
-      const localPodcasts = localStorage.getItem('podcasts') !== undefined
-        ? JSON.parse(localStorage.getItem('podcasts')) : [];
-      state.local = localPodcasts;
+    loadLocalPodcasts: (state, action) => {
+      const localPodcasts = localStorage.getItem('podcasts');
+      console.log(typeof localPodcasts)
+      if (localPodcasts === '' || localPodcasts === null) {
+        localStorage.setItem('podcasts', '[]');
+        state.local = [];
+      } else {
+        state.local = JSON.parse(localPodcasts);
+      }
     },
     toggleActive: (state) => {
       state.active = !state.active;
@@ -23,7 +28,7 @@ export const podcastSlice = createSlice({
     addPodcast: (state, action) => {
       let item = { ...action.payload, id: uuidv4() };
       if (state.local.filter(e => e.audio === item.audio).length === 0) {
-        state.local.unshift(action.payload)
+        state.local.unshift(item)
       } else {
         return;
       }
@@ -43,7 +48,7 @@ export const podcastSlice = createSlice({
 
 export const {
   toggleActive,
-  setLocalPodcasts,
+  loadLocalPodcasts,
   setRemotePodcasts,
   addPodcast,
   deletePodcast,

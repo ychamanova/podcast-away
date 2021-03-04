@@ -9,12 +9,12 @@ export function List({ list, podcasts }) {
       <Droppable droppableId={list}>
         {provided => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
+            <h1>{list}</h1>
             {podcasts.map((p, i) => (<Row key={p.audio} podcast={p} index={i} />))}
             {provided.placeholder}
           </div>
         )
         }
-
       </Droppable>
     </div>
   )

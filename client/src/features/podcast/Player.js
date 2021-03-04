@@ -5,7 +5,7 @@ import { List } from './List'
 import {
   addPodcast,
   deletePodcast,
-  setLocalPodcasts,
+  loadLocalPodcasts,
   fetchRemotePodcasts,
   selectLocalPodcasts,
   selectRemotePodcasts,
@@ -17,6 +17,10 @@ export function Player() {
   const remote = useSelector(selectRemotePodcasts);
   const local = useSelector(selectLocalPodcasts);
   const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(fetchRemotePodcasts());
+    dispatch(loadLocalPodcasts());
+  }, [])
 
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
@@ -46,10 +50,7 @@ export function Player() {
     }
   }
 
-  React.useEffect(() => {
-    dispatch(fetchRemotePodcasts());
-    dispatch(setLocalPodcasts());
-  }, [])
+
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
