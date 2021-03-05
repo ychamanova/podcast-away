@@ -2,3 +2,11 @@
   display: flex;
   padding: 40px;
 }
+
+@media only screen and (max-width: 900px) {
+  .Player {
+    display: flex;
+    padding: 10px;
+    flex-direction: column-reverse;
+  }
+}

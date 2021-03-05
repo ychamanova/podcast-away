@@ -11,3 +11,14 @@
   margin: 20px;
   background-color: rgba(0, 0, 5, 0.571);
 }
+
+@media only screen and (max-width: 900px) {
+  .List {
+    width: 100%;
+  }
+  .ListDroppable {
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(0, 0, 5, 0.571);
+  }
+}

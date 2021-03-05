@@ -28,26 +28,28 @@ export function Player() {
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
     //if local element is dropped anywhere on screen, delete it and refresh local storage
-    if (destination === null && source.droppableId === 'Local') {
+    if ((source.droppableId === 'Local' && destination === null)
+      || (source.droppableId === 'Local' && destination.droppableId === 'Remote')) {
       dispatch(deletePodcast(draggableId));
       dispatch(updateLocalStorage());
-    } else if (destination === null) {
+    }//if any other element doesn't have a destination, do nothing 
+    else if (destination === null) {
       return;
-    } else if (destination.droppableId === 'Remote' && source.droppableId === 'Local') {
-      dispatch(deletePodcast(draggableId));
-      dispatch(updateLocalStorage());
-    } else if (source.droppableId === 'Remote' && destination.droppableId === 'Local') {
+    }//save podcast
+    else if (source.droppableId === 'Remote' && destination.droppableId === 'Local') {
       const item = remote.find(x => x.id === draggableId);
       dispatch(addPodcast(item));
       dispatch(updateLocalStorage());
-    } else if (source.droppableId === 'Local' && destination.droppableId === 'Local') {
+    }//local->local rearrange
+    else if (source.droppableId === 'Local' && destination.droppableId === 'Local') {
       const list = [...local];
       const item = list.find(x => x.id === draggableId);
       list.splice(source.index, 1);
       list.splice(destination.index, 0, item);
       dispatch(updateLocalPodcasts(list));
       dispatch(updateLocalStorage());
-    } else {
+    }//do nothing 
+    else {
       return;
     }
   }

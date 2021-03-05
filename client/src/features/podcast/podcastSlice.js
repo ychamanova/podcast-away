@@ -7,33 +7,37 @@ export const podcastSlice = createSlice({
     local: [],
     remote: [],
     activeItem: {},
-    playlist: [],
     playing: false,
   },
   reducers: {
-    playLocal: (state, action) => {
-      console.log(state.playlist)
-    },
-    playRemote: (state, action) => {
-      console.log(state.playlist)
+    playNext: (state, action) => {
+      let idx = action.payload;
+      let arr = state.local.slice();
+      setActiveItem(state.local[idx]);
     },
     setActiveItem: (state, action) => {
+      //same podcast, toggle play state
       if (action.payload.id === state.activeItem.id) {
         let curState = state.playing;
         state.playing = !curState;
-      } else {
+        //handle the end of remote playlist to stop playing
+      } else if (!action.payload) {
+        state.activeItem = {};
+        state.playing = false;
+      }
+      //play a different podcast
+      else {
         state.activeItem = action.payload;
         state.playing = true;
       }
     },
-    playing: (state, action) => {
-      console.log(action.payload)
-    },
+    //add an id to remotely fetched podcasts
     setRemotePodcasts: (state, action) => {
       state.remote = action.payload.map(item => ({ ...item, id: uuidv4() }))
     },
     loadLocalPodcasts: (state, action) => {
       const localPodcasts = localStorage.getItem('podcasts');
+      //handle no localstorage
       if (localPodcasts === '' || localPodcasts === null) {
         localStorage.setItem('podcasts', '[]');
         state.local = [];
@@ -68,6 +72,7 @@ export const {
   setRemotePodcasts,
   addPodcast,
   deletePodcast,
+  playNext,
   setActiveItem,
   updateLocalStorage,
   updateLocalPodcasts,
