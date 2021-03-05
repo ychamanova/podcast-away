@@ -46,6 +46,7 @@ export const podcastSlice = createSlice({
       }
     },
     addPodcast: (state, action) => {
+      //generate new id, set local property
       let item = { ...action.payload, id: uuidv4(), local: true };
       if (state.local.filter(e => e.audio === item.audio).length === 0) {
         state.local.unshift(item);

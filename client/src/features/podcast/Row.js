@@ -61,7 +61,7 @@ export function Row({ podcast, index }) {
           ref={provided.innerRef}>
           <img className={styles.rowImage} src={podcast.image} />
           <div className={styles.rowContent}>
-            {podcast.name}<br />
+            <h3 className={styles.rowTitle}>{podcast.name}</h3>
             {podcast.title}
           </div>
           <button onClick={() => playSong(podcast)} className={styles.rowPlayButton}>

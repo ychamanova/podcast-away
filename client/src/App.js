@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <header className={styles.AppHeader}>
-        PodcastAway
+        <h1>PodcastAway</h1>
       </header>
       <Player />
     </div>
