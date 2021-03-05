@@ -6,9 +6,29 @@ export const podcastSlice = createSlice({
   initialState: {
     local: [],
     remote: [],
-    active: false,
+    activeItem: {},
+    playlist: [],
+    playing: false,
   },
   reducers: {
+    playLocal: (state, action) => {
+      console.log(state.playlist)
+    },
+    playRemote: (state, action) => {
+      console.log(state.playlist)
+    },
+    setActiveItem: (state, action) => {
+      if (action.payload.id === state.activeItem.id) {
+        let curState = state.playing;
+        state.playing = !curState;
+      } else {
+        state.activeItem = action.payload;
+        state.playing = true;
+      }
+    },
+    playing: (state, action) => {
+      console.log(action.payload)
+    },
     setRemotePodcasts: (state, action) => {
       state.remote = action.payload.map(item => ({ ...item, id: uuidv4() }))
     },
@@ -21,11 +41,8 @@ export const podcastSlice = createSlice({
         state.local = JSON.parse(localPodcasts);
       }
     },
-    toggleActive: (state) => {
-      state.active = !state.active;
-    },
     addPodcast: (state, action) => {
-      let item = { ...action.payload, id: uuidv4() };
+      let item = { ...action.payload, id: uuidv4(), local: true };
       if (state.local.filter(e => e.audio === item.audio).length === 0) {
         state.local.unshift(item);
       } else {
@@ -47,11 +64,11 @@ export const podcastSlice = createSlice({
 });
 
 export const {
-  toggleActive,
   loadLocalPodcasts,
   setRemotePodcasts,
   addPodcast,
   deletePodcast,
+  setActiveItem,
   updateLocalStorage,
   updateLocalPodcasts,
 } = podcastSlice.actions;
@@ -64,6 +81,8 @@ export const fetchRemotePodcasts = () => (dispatch) => {
 
 export const selectRemotePodcasts = (state) => state.podcast.remote;
 export const selectLocalPodcasts = (state) => state.podcast.local;
+export const selectActiveItem = (state) => state.podcast.activeItem;
+export const selectPlaying = (state) => state.podcast.playing;
 
 
 export default podcastSlice.reducer;

@@ -11,6 +11,7 @@ export function List({ list, podcasts }) {
           <div className={styles.ListDroppable}
             ref={provided.innerRef}
             {...provided.droppableProps}>
+            {provided.placeholder}
             <h1 className={styles.ListTitle}>{list}</h1>
             {podcasts.map((p, i) => (<Row key={p.audio} podcast={p} index={i} />))}
           </div>
