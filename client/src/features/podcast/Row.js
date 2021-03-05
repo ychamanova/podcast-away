@@ -21,10 +21,12 @@ export function Row({ podcast, index }) {
   const local = useSelector(selectLocalPodcasts);
 
   audioElement.current.addEventListener("ended", () => {
-    //if podcast has a property "local" set to true, on track "end" event play next podcast in local category
+    //if podcast has a property "local" set to true
     if (podcast.local === true) {
       if (index === local.length - 1) {
-        dispatch(setActiveItem(local[0]))
+        //last podcast finishes, stop playback
+        dispatch(setActiveItem({}))
+        //on track "end" event play next podcast in local category
       } else {
         dispatch(setActiveItem(local[index + 1]));
       }
@@ -61,11 +63,12 @@ export function Row({ podcast, index }) {
           ref={provided.innerRef}>
           <img className={styles.rowImage} src={podcast.image} />
           <div className={styles.rowContent}>
-            <h3 className={styles.rowTitle}>{podcast.name}</h3>
-            {podcast.title}
+            <h2 className={styles.rowName}>{podcast.name}</h2>
+            <h4 className={styles.rowTitle}>{podcast.title}</h4>
+            {podcast.description}
           </div>
           <button onClick={() => playSong(podcast)} className={styles.rowPlayButton}>
-            <FontAwesomeIcon icon={(active.id === podcast.id && playing) ? faPause : faPlay} size='2x' />
+            <FontAwesomeIcon icon={(active.id === podcast.id && playing) ? faPause : faPlay} size='1x' />
           </button>
         </div>
       )}
