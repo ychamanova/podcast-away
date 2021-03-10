@@ -20,7 +20,7 @@
 
 ## 🧐 About
 
-### Pre-requisites
+### Prerequisites
 [npm package manager](https://www.npmjs.com/)
 
 ## Running the application locally
