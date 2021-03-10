@@ -21,27 +21,26 @@
 ## 🧐 About
 Write about 1-2 paragraphs describing the purpose of your project.
 
-## 🏁 Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 [npm package manager](https://www.npmjs.com/)
 
-### Installing
-Start the front-end server:
-From the root folder
+### Running the application locally
 
+## Start the front-end server
+(from the root folder)
 ```
 cd client
 npm start
 ```
 
-Start the back-end server
-
+## Start the back-end server
+(from the root folder)
 ```
 cd server
 npm start
 ```
+
+Go to http://localhost:3000/ on your local machine
 
 
 
