@@ -55,10 +55,13 @@ The pieces of state that we require to run the application are : "local" items, 
 </p>
 <p>
 Podcast player consists of the following components:
-- Player: renders two lists, manages the saving functionality.
-- List: renders a list of podcasts.
-- Row: renders individual podcast, and invokes the correct podcast state based on user interaction with the interface. The component also detects, which podcast is currently active by monitoring the state with useEffect hook. If it is the one that is active, it plays the audio. Anytime that state changes, it responds to changes.
-The row also contains the logic for what to do when the podcast ended. If the podcast is local, it plays the next podcast until the end of list is reached. If the podcast is remote, after it finishes playing, it does not invoke autoplay of the next podcast.
+
+<ul>
+Player: renders two lists, manages the saving functionality.
+<li> List: renders a list of podcasts. </li>
+<li> Row: renders individual podcast, and invokes the correct podcast state based on user interaction with the interface. The component also detects, which podcast is currently active by monitoring the state with useEffect hook. If it is the one that is active, it plays the audio. Anytime that state changes, it responds to changes. </li>
+<li> The row also contains the logic for what to do when the podcast ended. If the podcast is local, it plays the next podcast until the end of list is reached. If the podcast is remote, after it finishes playing, it does not invoke autoplay of the next podcast. </li>
+</ul>
 </p>
 
 
