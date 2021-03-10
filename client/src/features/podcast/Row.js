@@ -12,6 +12,8 @@ import {
   selectLocalPodcasts
 } from './podcastSlice';
 
+const stockImage = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80'
+
 export function Row({ podcast, index }) {
   //grab reference to the current podcast
   const audioElement = useRef(new Audio(podcast.audio));
@@ -61,7 +63,7 @@ export function Row({ podcast, index }) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}>
-          <img className={styles.rowImage} src={podcast.image} />
+          <img className={styles.rowImage} src={podcast.image || stockImage} />
           <div className={styles.rowContent}>
             <h2 className={styles.rowName}>{podcast.name}</h2>
             <h4 className={styles.rowTitle}>{podcast.title}</h4>
