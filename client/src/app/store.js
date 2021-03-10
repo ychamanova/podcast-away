@@ -1,4 +1,3 @@
-import { throttle } from 'lodash';
 import { configureStore } from '@reduxjs/toolkit';
 import podcastReducer from '../features/podcast/podcastSlice';
 
