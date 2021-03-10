@@ -20,7 +20,7 @@
 
 ## 🧐 About
 
-### Prerequisites
+### Pre-requisites
 [npm package manager](https://www.npmjs.com/)
 
 ## Running the application locally
@@ -47,7 +47,7 @@ The data for the application comes from two sources:
 2. Local Storage
 <p>
 Initially, application loads podcasts from the remote API.
-User can drag and drop podcasts to save them on their local machine, as well as drop local podcasts anywhere to delete them from the local machine. By default, a podcast get saved at the top of the list. To rearrange, drag and drop them witin the local list. Local podcasts get saved in the local storage on the browser as a JSON string element under the key "podcasts".
+User can drag and drop podcasts to save them on their local machine, as well as drop local podcasts anywhere to delete them from the local machine. By default, a podcast gets saved at the top of the list. To rearrange, drag and drop them witin the local list. Local podcasts get saved in the local storage on the browser as a JSON string element under the key "podcasts".
 </p>
 <p>
 The state of the application is stored in podcastSlice.js with the help of the Redux library.
@@ -58,14 +58,12 @@ Podcast player consists of the following components:
 <ul>
 <li> Player: renders two lists, manages the saving and deleting functionality.</li>
 <li> List: renders a list of podcasts. </li>
-<li> Row: renders individual podcast, and invokes the correct podcast state based on user interaction with the interface. The component also detects, which podcast is currently active by monitoring the state with useEffect hook. If it is the one that is active, it plays the audio. Anytime that state changes, it responds to changes.
-<br> The row also contains the logic for what to do when the podcast ended. If the podcast is local, it plays the next podcast until the end of list is reached. If the podcast is remote, after it finishes playing, it does not invoke autoplay of the next podcast. 
+<li> Row: renders individual podcast, and invokes the correct podcast state based on user interaction with the interface. The component also detects which podcast is currently active by monitoring the state with useEffect hook. If it is the one that is active, it plays the audio. Anytime that state changes, it responds to changes.
+<br> The row also contains the logic for what to do when the podcast ends. If the podcast is local, it plays the next podcast until the end of list is reached. If the podcast is remote, after it finishes playing, it does not invoke autoplay of the next podcast. 
 </br>
 </li>
 </ul>
 </p>
-
-
 
 
 
