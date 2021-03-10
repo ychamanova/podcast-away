@@ -16,56 +16,33 @@
 - [ReactJs](https://reactjs.org/) - Web Framework
 -[ReduxJs](https://redux.js.org/) - State Container
 - [NodeJs](https://nodejs.org/en/) - Server Environment
+- [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) - Drag and Drop Library
 
-## 🧐 About <a name = "about"></a>
+## 🧐 About
 Write about 1-2 paragraphs describing the purpose of your project.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## 🏁 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
+[npm package manager](https://www.npmjs.com/)
 
 ### Installing
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Start the front-end server:
+From the root folder
 
 ```
-until finished
+cd client
+npm start
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-Explain what these tests test and why
+Start the back-end server
 
 ```
-Give an example
+cd server
+npm start
 ```
 
-### And coding style tests
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-Add notes about how to use the system.
 
 
 
