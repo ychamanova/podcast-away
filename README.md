@@ -47,7 +47,7 @@ The data for the application comes from two sources:
 2. Local Storage
 <p>
 Initially, application loads podcasts from the remote API.
-User can drag and drop podcasts to save them on their local machine. They get saved in the local storage on the browser as a JSOn string element under the key "podcasts".
+User can drag and drop podcasts to save them on their local machine. They get saved in the local storage on the browser as a JSON string element under the key "podcasts".
 </p>
 <p>
 The state of the application is stored in podcastSlice.js with the help of the Redux library.
@@ -55,9 +55,9 @@ The pieces of state that we require to run the application are : "local" items, 
 </p>
 <p>
 Podcast player consists of the following components:
-Player: renders two lists, manages the saving functionality.
-List: renders a list of podcasts.
-Row: renders individual podcast, and invokes the correct podcast state based on user interaction with the interface. The component also detects, which podcast is currently active by monitoring the state with useEffect hook. If it is the one that is active, it plays the audio. Anytime that state changes, it responds to changes.
+-Player: renders two lists, manages the saving functionality.
+-List: renders a list of podcasts.
+-Row: renders individual podcast, and invokes the correct podcast state based on user interaction with the interface. The component also detects, which podcast is currently active by monitoring the state with useEffect hook. If it is the one that is active, it plays the audio. Anytime that state changes, it responds to changes.
 The row also contains the logic for what to do when the podcast ended. If the podcast is local, it plays the next podcast until the end of list is reached. If the podcast is remote, after it finishes playing, it does not invoke autoplay of the next podcast.
 </p>
 
