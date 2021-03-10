@@ -29,6 +29,7 @@
 (from the root folder)
 ```
 cd client
+npm install
 npm start
 ```
 
@@ -36,6 +37,7 @@ npm start
 (from the root folder)
 ```
 cd server
+npm install
 npm start
 ```
 
