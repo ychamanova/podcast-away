@@ -10,11 +10,6 @@ export const podcastSlice = createSlice({
     playing: false,
   },
   reducers: {
-    playNext: (state, action) => {
-      let idx = action.payload;
-      let arr = state.local.slice();
-      setActiveItem(state.local[idx]);
-    },
     setActiveItem: (state, action) => {
       //same podcast, toggle play state
       if (action.payload.id === state.activeItem.id) {
@@ -73,7 +68,6 @@ export const {
   setRemotePodcasts,
   addPodcast,
   deletePodcast,
-  playNext,
   setActiveItem,
   updateLocalStorage,
   updateLocalPodcasts,

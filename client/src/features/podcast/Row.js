@@ -73,6 +73,5 @@ export function Row({ podcast, index }) {
         </div>
       )}
     </Draggable>
-
   )
 }

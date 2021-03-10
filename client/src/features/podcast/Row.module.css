@@ -66,3 +66,10 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+.rowProgress {
+  background-color: blueviolet;
+  padding: 5px;
+  width: 100%;
+  border-radius: 10px;
+}

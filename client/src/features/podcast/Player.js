@@ -56,12 +56,9 @@ export function Player() {
   return (
     <div className={styles.Player}>
       <DragDropContext onDragEnd={onDragEnd} >
-
         <List list={'Remote'} podcasts={remote} />
         <br />
         <List list={'Local'} podcasts={local} />
-
-
       </DragDropContext>
     </div>
   )
