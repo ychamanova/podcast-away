@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=700px height=300px src="https://i.imgur.com/C1jmWJx.png" alt="Project Snapshot"></a>
+ <img width=700px height=auto src="https://i.imgur.com/C1jmWJx.png" alt="Project Snapshot"></a>
 </p>
 
 <h3 align="center">PodcastAway</h3>
